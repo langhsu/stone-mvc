@@ -1,8 +1,0 @@
-#foreach($name in $worlds) 
-   $velocityCount:&nbsp
-   Here is <a href="$ctxpath/world/prefix-$name">$name</a>.
-   <br/>
-#end
-<p>
-<a href="$ctxpath">Home</a>
-

@@ -1,7 +1,0 @@
-Welcome to $name. 
-<p>
-Here is its index $index.
-
-<p>
-<a href="$ctxpath/world/list">Back</a><br>
-<a href="$ctxpath">Home</a>
