@@ -1,5 +1,10 @@
 package stone.exception;
 
+/**
+ * 
+ * @author langhsu
+ *
+ */
 public enum ErrorCode {
 	
 	// system

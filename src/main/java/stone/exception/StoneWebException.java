@@ -5,31 +5,20 @@ import java.util.TreeMap;
 
 import org.apache.commons.lang.ArrayUtils;
 
+/**
+ * 
+ * @author langhsu
+ *
+ */
 public class StoneWebException extends RuntimeException {
 	private static final long serialVersionUID = -3762622261674065229L;
 
 	private final static String lineSeparator = System.getProperty("line.separator");
-
-    public static StoneWebException unchecked(Throwable e) {
-        return unchecked(e, null);
-    }
-
-    public static StoneWebException unchecked(Throwable e, ErrorCode errorCode) {
-        if (e instanceof StoneWebException) {
-            StoneWebException se = (StoneWebException) e;
-            if (errorCode != null && errorCode != se.getErrorCode()) {
-                return new StoneWebException(e, errorCode);
-            }
-            return se;
-        } else {
-            return new StoneWebException(e, errorCode);
-        }
-    }
-
-    private Object[] args;
+	
+	private Object[] args;
     private ErrorCode errorCode;
     private final Map<String, Object> properties = new TreeMap<String, Object>();
-
+    
     public StoneWebException(ErrorCode errorCode) {
         this.errorCode = errorCode;
     }
@@ -63,6 +52,22 @@ public class StoneWebException extends RuntimeException {
         super(message, cause);
         this.args = args;
         this.errorCode = errorCode;
+    }
+    
+    public static StoneWebException unchecked(Throwable e) {
+        return unchecked(e, null);
+    }
+
+    public static StoneWebException unchecked(Throwable e, ErrorCode errorCode) {
+        if (e instanceof StoneWebException) {
+            StoneWebException se = (StoneWebException) e;
+            if (errorCode != null && errorCode != se.getErrorCode()) {
+                return new StoneWebException(e, errorCode);
+            }
+            return se;
+        } else {
+            return new StoneWebException(e, errorCode);
+        }
     }
 
     public ErrorCode getErrorCode() {
